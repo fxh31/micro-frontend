@@ -1,0 +1,25 @@
+{
+  "name": "monorepo-pnpm",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "main": "index.js",
+  "scripts": {
+    "build:portal": "turbo build --filter=portal",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "rmdist": "turbo rmdist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.15.2",
+  "dependencies": {
+    "@repo/utils": "workspace:^"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  }
+}

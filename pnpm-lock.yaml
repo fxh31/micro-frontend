@@ -24,6 +24,64 @@ importers:
       vue-router:
         specifier: ^4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
+      wujie-vue3:
+        specifier: ^1.0.25
+        version: 1.0.25(vue@3.5.13(typescript@5.7.3))
+    devDependencies:
+      '@tsconfig/node22':
+        specifier: ^22.0.0
+        version: 22.0.0
+      '@types/node':
+        specifier: ^22.13.4
+        version: 22.13.9
+      '@vitejs/plugin-vue':
+        specifier: ^5.2.1
+        version: 5.2.1(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2))(vue@3.5.13(typescript@5.7.3))
+      '@vue/eslint-config-prettier':
+        specifier: ^10.2.0
+        version: 10.2.0(eslint@9.21.0(jiti@2.4.2))(prettier@3.5.3)
+      '@vue/eslint-config-typescript':
+        specifier: ^14.4.0
+        version: 14.4.0(eslint-plugin-vue@9.33.0(eslint@9.21.0(jiti@2.4.2)))(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3)
+      '@vue/tsconfig':
+        specifier: ^0.7.0
+        version: 0.7.0(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
+      eslint:
+        specifier: ^9.20.1
+        version: 9.21.0(jiti@2.4.2)
+      eslint-plugin-vue:
+        specifier: ^9.32.0
+        version: 9.33.0(eslint@9.21.0(jiti@2.4.2))
+      jiti:
+        specifier: ^2.4.2
+        version: 2.4.2
+      npm-run-all2:
+        specifier: ^7.0.2
+        version: 7.0.2
+      prettier:
+        specifier: ^3.5.1
+        version: 3.5.3
+      typescript:
+        specifier: ~5.7.3
+        version: 5.7.3
+      vite:
+        specifier: ^6.1.0
+        version: 6.2.0(@types/node@22.13.9)(jiti@2.4.2)
+      vite-plugin-vue-devtools:
+        specifier: ^7.7.2
+        version: 7.7.2(rollup@4.34.9)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2))(vue@3.5.13(typescript@5.7.3))
+      vue-tsc:
+        specifier: ^2.2.2
+        version: 2.2.8(typescript@5.7.3)
+
+  apps/module1-vue-web:
+    dependencies:
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.3)
+      vue-router:
+        specifier: ^4.5.0
+        version: 4.5.0(vue@3.5.13(typescript@5.7.3))
     devDependencies:
       '@tsconfig/node22':
         specifier: ^22.0.0
@@ -232,6 +290,10 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
+
+  '@babel/runtime@7.26.9':
+    resolution: {integrity: sha512-aA63XwOkcl4xxQa3HjPMqOP6LiK0ZDv3mUPYEFXkpHbaFjtGggE1A61FjFzJnB+p7/oy2gA8E+rcBNl/zC1tMg==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/template@7.26.9':
     resolution: {integrity: sha512-qyRplbeIpNZhmzOysF/wFMuP9sctmh2cFzRAZOn1YapxBsE1i9bJIY586R/WBLfLcmcBlM8ROBiQURnnNy+zfA==}
@@ -1672,6 +1734,9 @@ packages:
     resolution: {integrity: sha512-qpt8EwugBWDw2cgE2W+/3oxC+KTez2uSVR8JU9Q36TXPAGCaozfQUs59v4j4GFpWTaw0i6hAZSvOmu1J0uOEUg==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
+  regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
+
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -2010,6 +2075,14 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
+  wujie-vue3@1.0.25:
+    resolution: {integrity: sha512-4yOdI+SluU/+eAh/KXvECdUUG/3bHRbBp1Hooq1/rl4HvlotO2QyPY8UyUlBz3Q0byDQcARaSbItHdnmIf1CIA==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  wujie@1.0.25:
+    resolution: {integrity: sha512-V9UtKYqs5Dop8ZgxYAySkavwC9Sc15EvzlbSD8N96VFwOD0vct0N1j0S1SLXkzruhooYEeAzlPNyt8gCBPcMKA==}
+
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
@@ -2203,6 +2276,10 @@ snapshots:
       '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.26.9)
     transitivePeerDependencies:
       - supports-color
+
+  '@babel/runtime@7.26.9':
+    dependencies:
+      regenerator-runtime: 0.14.1
 
   '@babel/template@7.26.9':
     dependencies:
@@ -3502,6 +3579,8 @@ snapshots:
       json-parse-even-better-errors: 4.0.0
       npm-normalize-package-bin: 4.0.0
 
+  regenerator-runtime@0.14.1: {}
+
   resolve-from@4.0.0: {}
 
   reusify@1.1.0: {}
@@ -3814,6 +3893,15 @@ snapshots:
       isexe: 3.1.1
 
   word-wrap@1.2.5: {}
+
+  wujie-vue3@1.0.25(vue@3.5.13(typescript@5.7.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.7.3)
+      wujie: 1.0.25
+
+  wujie@1.0.25:
+    dependencies:
+      '@babel/runtime': 7.26.9
 
   xml-name-validator@4.0.0: {}
 

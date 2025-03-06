@@ -13,7 +13,7 @@ const router = createRouter({
       name: 'iframe',
       component: () => import('../views/IframeView.vue'),
       meta: {
-        iframeUrl: 'http://localhost:5174/',
+        iframeUrl: 'http://localhost:5201/',
       },
       props: true,
     },

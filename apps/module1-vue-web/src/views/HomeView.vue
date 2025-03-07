@@ -29,6 +29,7 @@ if (window.$wujie) {
     })
   }
   setupEventListener()
+  // console.log(window.parent)
 }
 </script>
 

@@ -19,7 +19,7 @@ const router = createRouter({
     },
     {
       path: '/wujie/:msg',
-      name: 'wujie',
+      name: 'wujieTest',
       components: {
         default: () => import('../views/DefaultView.vue'),
         micro: () => import('../views/WujieView.vue'),

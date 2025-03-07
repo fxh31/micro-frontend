@@ -7,7 +7,7 @@
   <WujieVue
     width="100%"
     height="100%"
-    name="xxx"
+    :name="route.name"
     :url="route.meta.wujieUrl"
     :sync="true"
     :alive="true"
@@ -47,6 +47,7 @@ bus.$on('routeChange', (path) => {
 })
 // 主应用发送事件
 const sendModule = () => {
+  // console.log(window.document.querySelector('iframe[name=wujieTest]').contentWindow)
   bus.$emit('module1Change', 'some message')
 }
 </script>

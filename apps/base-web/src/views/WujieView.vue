@@ -3,6 +3,7 @@
   <!--
    sync：开启路由同步模式，路由同步模式，开启后无界会将子应用的name作为一个url查询参数，实时同步子应用的路径作为这个查询参数的值，这样分享 URL 或者刷新浏览器子应用路由都不会丢失。
    alive：保活模式
+   plugins：共享模块插件
    -->
   <WujieVue
     width="100%"
@@ -12,6 +13,12 @@
     :sync="true"
     :alive="true"
     :props="state"
+    :plugins="[
+      {
+        // jsExcludes: ['lodash.js'],
+        jsBeforeLoaders: [{ content: 'window.lodash = window.parent.lodash' }],
+      },
+    ]"
   ></WujieVue>
 </template>
 

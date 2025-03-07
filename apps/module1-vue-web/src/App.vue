@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 const route = useRoute()
-console.log(route.params)
 function toLogin() {
   // window.open('http://localhost:5173/about')
   // window.location.href = 'http://localhost:5173/about' // 原地

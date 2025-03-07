@@ -10,7 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/iframe/user1">Iframe</RouterLink>
+        <RouterLink to="/iframe/1">Iframe</RouterLink>
         <RouterLink to="/wujie/wujie1">wujie</RouterLink>
       </nav>
     </div>

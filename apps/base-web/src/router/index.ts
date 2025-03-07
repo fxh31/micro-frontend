@@ -9,7 +9,7 @@ const router = createRouter({
       // component: HomeView,
     },
     {
-      path: '/iframe/:count',
+      path: '/iframe/:num',
       name: 'iframe',
       component: () => import('../views/IframeView.vue'),
       meta: {

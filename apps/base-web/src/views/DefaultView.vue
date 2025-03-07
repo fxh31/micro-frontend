@@ -7,8 +7,15 @@ defineProps<{
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>default view</h3>
+    <h3>default router view</h3>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.greetings {
+  display: flex;
+}
+h3 {
+  margin-top: 15px;
+}
+</style>

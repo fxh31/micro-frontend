@@ -17,18 +17,18 @@ const router = createRouter({
       },
       props: true,
     },
-    // {
-    //   path: '/wujie/:msg',
-    //   name: 'wujie',
-    //   components: {
-    //     default: () => import('../views/DefaultView.vue'),
-    //     micro: () => import('../views/IframeView.vue'),
-    //   },
-    //   meta: {
-    //     iframeUrl: 'http://localhost:5174/',
-    //   },
-    //   props: true,
-    // },
+    {
+      path: '/wujie/:msg',
+      name: 'wujie',
+      components: {
+        default: () => import('../views/DefaultView.vue'),
+        micro: () => import('../views/WujieView.vue'),
+      },
+      meta: {
+        wujieUrl: 'http://localhost:5201/',
+      },
+      props: true,
+    },
   ],
 })
 

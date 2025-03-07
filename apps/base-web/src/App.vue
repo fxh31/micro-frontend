@@ -11,13 +11,17 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/iframe/user1">Iframe</RouterLink>
-        <!-- <RouterLink to="/wujie/wujie1">wujie</RouterLink> -->
+        <RouterLink to="/wujie/wujie1">wujie</RouterLink>
       </nav>
     </div>
   </header>
   <div>
     <RouterView />
-    <router-view name="micro" />
+    <RouterView name="micro" v-slot="{ Component }">
+      <KeepAlive>
+        <component :is="Component" />
+      </KeepAlive>
+    </RouterView>
   </div>
 </template>
 

@@ -27,6 +27,8 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
             ? props.container.querySelector('#app')
             : document.getElementById('app')) as Element,
         )
+
+      app.provide('mainProps', props)
     },
     bootstrap() {
       console.log('--bootstrap')

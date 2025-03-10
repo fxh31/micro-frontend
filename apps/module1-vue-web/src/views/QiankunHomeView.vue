@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 
 defineProps({
   id: String,
 })
 
-const sentMessage = () => {}
-onMounted((props) => {
-  console.log(props)
-})
+const mainProps = inject('mainProps')
+const sentMessage = () => {
+  mainProps.setGlobalState({
+    user: 'module2',
+  })
+}
+onMounted(() => {})
 </script>
 
 <template>

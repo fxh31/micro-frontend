@@ -11,10 +11,15 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
   app.use(router)
   app.mount('#app')
 } else {
-  debugger
   renderWithQiankun({
     mount(props) {
       console.log('--mount', props)
+      // 修改主应用的全局状态
+      props.setGlobalState({
+        user: 'aaa',
+      })
+      render(props)
+
       app
         .use(router)
         .mount(
@@ -34,4 +39,12 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
       app.unmount()
     },
   })
+}
+
+function render(props) {
+  if (props) {
+    props.onGlobalStateChange((state, prev) => {
+      console.log('子应用监听主应用注册并触发改变的值', state, prev)
+    })
+  }
 }

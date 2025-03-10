@@ -30,11 +30,10 @@ const router = createRouter({
     //   props: true,
     // },
     {
-      path: '/qiankun',
+      path: '/qiankun/:id',
       name: 'qiankunTest',
       components: {
-        default: () => import('../views/DefaultView.vue'),
-        micro: () => import('../views/WujieView.vue'),
+        default: () => import('../views/QiankunView.vue'),
       },
       meta: {},
       props: true,

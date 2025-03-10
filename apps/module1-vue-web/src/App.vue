@@ -33,8 +33,9 @@ const count = ref(1)
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/wujieUser1">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <!-- <RouterLink to="/wujieUser1">wujie Home</RouterLink> -->
+        <RouterLink to="/">About</RouterLink>
+        <RouterLink to="/qiankun/q1">qiankun home</RouterLink>
       </nav>
     </div>
   </header>

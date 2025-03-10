@@ -4,13 +4,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import WujieVue from 'wujie-vue3'
+// import WujieVue from 'wujie-vue3'
 import _ from 'lodash-es'
+
+import { setupQiankun } from '@/utils/setupQiankun'
 
 const app = createApp(App)
 
 app.use(router)
-app.use(WujieVue)
+// app.use(WujieVue)
 
 app.mount('#app')
 
@@ -24,3 +26,5 @@ console.log(
   }),
 )
 window.lodash = _
+
+setupQiankun()

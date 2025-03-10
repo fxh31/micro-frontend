@@ -11,7 +11,8 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/iframe/1">Iframe</RouterLink>
-        <RouterLink to="/wujie/wujie1">wujie</RouterLink>
+        <!-- <RouterLink to="/wujie/wujie1">wujie</RouterLink> -->
+        <RouterLink to="/qiankun/q1">qiankun</RouterLink>
       </nav>
     </div>
   </header>

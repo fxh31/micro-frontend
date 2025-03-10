@@ -7,8 +7,6 @@ import router from './router'
 // import WujieVue from 'wujie-vue3'
 import _ from 'lodash-es'
 
-import { setupQiankun } from '@/utils/setupQiankun'
-
 const app = createApp(App)
 
 app.use(router)
@@ -26,5 +24,3 @@ console.log(
   }),
 )
 window.lodash = _
-
-setupQiankun()

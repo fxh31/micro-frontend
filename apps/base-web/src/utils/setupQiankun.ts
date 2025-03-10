@@ -13,18 +13,6 @@ actions.onGlobalStateChange((state, prev) => {
 
 // actions.offGlobalStateChange()
 
-registerMicroApps([
-  {
-    name: 'vue-app1',
-    entry: 'http://localhost:5201/',
-    container: '#qk-container',
-    activeRule: '/qiankun/:id',
-    props: {
-      age: '25',
-    },
-  },
-])
-
 export const setupQiankun = () => {
   start()
 }

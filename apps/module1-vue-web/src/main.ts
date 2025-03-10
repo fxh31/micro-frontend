@@ -5,14 +5,16 @@ import App from './App.vue'
 import router from './router'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
-const app = createApp(App)
+let app = null
 
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
+  app = createApp(App)
   app.use(router)
   app.mount('#app')
 } else {
   renderWithQiankun({
     mount(props) {
+      app = createApp(App)
       console.log('--mount', props)
       // 修改主应用的全局状态
       props.setGlobalState({
@@ -27,7 +29,6 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
             ? props.container.querySelector('#app')
             : document.getElementById('app')) as Element,
         )
-
       app.provide('mainProps', props)
     },
     bootstrap() {

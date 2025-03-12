@@ -18,14 +18,14 @@ const router = createRouter({
       props: true,
     },
     {
-      path: '/wujie/:msg',
-      name: 'wujieTest',
-      components: {
-        default: () => import('../views/DefaultView.vue'),
-        micro: () => import('../views/WujieView.vue'),
-      },
+      path: '/iframealive',
+      name: 'iframeAlive',
       meta: {
-        wujieUrl: 'http://localhost:5201/',
+        // 动态生成 iframe 的配置
+        iframeConfig: (route) => ({
+          url: `http://localhost:5201/${route.params.id}`, // 动态 URL
+          key: `user_${route.params.id}`, // 唯一标识（必须唯一）
+        }),
       },
       props: true,
     },

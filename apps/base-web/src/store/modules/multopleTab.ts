@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import TestIframe from '@/components/TestIframe.vue'
 
+const MAX_CACHE = 5
+
 export const useMultipleTabStore = defineStore('multipleTab', {
   state: () => {
     return {
@@ -17,6 +19,9 @@ export const useMultipleTabStore = defineStore('multipleTab', {
   },
   actions: {
     addComponent(view) {
+      if (this.getCount >= MAX_CACHE) {
+        this.componentList.shift()
+      }
       this.componentList.push(view)
     },
   },

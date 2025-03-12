@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="container-btn">
-      <button @click="addComponent">添加组件</button>
+      <!-- <button @click="addComponent">添加组件</button> -->
       <input v-model="compName" />
     </div>
 
     <keep-alive>
       <component
-        v-for="(component, index) in components"
+        v-for="(component, index) in store.getComponentList"
         :key="component.name"
         :src="component.url"
         :isActive="getCurrentComp(component)"
@@ -19,16 +19,20 @@
 
 <script setup>
 import { ref, reactive, onMounted, onUnmounted, watch, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import TestIframe from './TestIframe.vue'
+import { useMultipleTabStore } from '@/store/modules/multopleTab'
 
-const components = reactive([
-  {
-    name: 'T1',
-    comp: TestIframe,
-    url: 'http://localhost:5201',
-  },
-])
+const route = useRoute()
+
+const store = useMultipleTabStore()
+
+const components = reactive([])
+
 const compName = ref('')
+watch(route, (newV) => {
+  compName.value = newV.name
+})
 
 const getCurrentComp = computed(() => {
   return (component) => {
@@ -36,13 +40,7 @@ const getCurrentComp = computed(() => {
   }
 })
 
-const addComponent = () => {
-  components.push({
-    name: 'T2',
-    comp: TestIframe,
-    url: 'http://localhost:3100',
-  })
-}
+const addComponent = () => {}
 </script>
 
 <style>

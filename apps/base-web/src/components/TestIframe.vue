@@ -12,7 +12,7 @@
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 const props = defineProps({
   src: String,
-  iframeKey: String, // 唯一标识
+  // iframeKey: String, // 唯一标识
   isActive: Boolean, // 是否当前激活（用于 Iframe 保活）
 })
 const count = ref(0)

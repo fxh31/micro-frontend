@@ -9,10 +9,11 @@ import Test from '@/components/Test.vue'
     <div class="wrapper">
       <h1>base</h1>
 
-      <!-- <nav>
+      <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/iframe/1">Iframe</RouterLink>
-      </nav> -->
+        <RouterLink to="/iframealive">IframeAlive</RouterLink>
+        <RouterLink to="/iframealive2">IframeAlive2</RouterLink>
+      </nav>
     </div>
   </header>
   <div>

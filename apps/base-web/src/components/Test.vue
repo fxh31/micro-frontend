@@ -12,6 +12,7 @@
         :src="component.url"
         :isActive="getCurrentComp(component)"
         :is="component.comp"
+        :iframeKey="component.name"
       />
     </keep-alive>
   </div>

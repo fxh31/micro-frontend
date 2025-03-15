@@ -33,13 +33,16 @@ const count = ref(1)
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/wujieUser1">Home</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>
-
-  <RouterView />
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
 <style scoped>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+import IframeManager from '@/components/IframeManager.vue'
+import Test from '@/components/Test.vue'
 </script>
 
 <template>
@@ -10,18 +11,19 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/iframe/1">Iframe</RouterLink>
-        <RouterLink to="/wujie/wujie1">wujie</RouterLink>
+        <RouterLink to="/iframealive">IframeAlive</RouterLink>
+        <RouterLink to="/iframealive2">IframeAlive2</RouterLink>
       </nav>
     </div>
   </header>
   <div>
-    <RouterView />
-    <RouterView name="micro" v-slot="{ Component }">
+    <Test />
+    <!-- <RouterView /> -->
+    <!-- <RouterView v-slot="{ Component }">
       <KeepAlive>
         <component :is="Component" />
       </KeepAlive>
-    </RouterView>
+    </RouterView> -->
   </div>
 </template>
 

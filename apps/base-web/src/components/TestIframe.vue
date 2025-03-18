@@ -37,12 +37,21 @@ function initPostBus() {
 }
 
 // 发送消息（触发指定事件监听器）
-function sendMessage() {
-  mainBus.emit('LOAD_CONFIG', { theme: 'dark', name: IframeId.value })
+async function sendMessage() {
+  // mainBus.emit('LOAD_CONFIG', { theme: 'dark', name: IframeId.value })
+  const res = await mainBus.request('Test_R', { name: 66 })
+  console.log(res)
+}
+
+function listenOn() {
+  mainBus.on('Test_Res', (res) => {
+    console.log('就是我', res)
+  })
 }
 
 onMounted(() => {
   initPostBus()
+  listenOn()
 })
 </script>
 

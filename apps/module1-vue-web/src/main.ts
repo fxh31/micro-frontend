@@ -16,11 +16,13 @@ app.mount('#app')
 const childBus = new CrossFrameEventBus(
   window.parent,
   'http://localhost:5200/', // 主项目域名
+  true,
 )
 
 // 监听事件（注册 LOAD_CONFIG 监听器）
-const offEvent = childBus.on('LOAD_CONFIG', (config) => {
-  console.log('Received config:', config)
-})
+// const offEvent = childBus.on('LOAD_CONFIG', (config) => {
+//   console.log('Received config:', config)
+// })
 
-app.provide('offEvent', offEvent)
+// app.provide('offEvent', offEvent)
+app.provide('childBus', childBus)

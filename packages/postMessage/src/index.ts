@@ -31,12 +31,11 @@ export class CrossFrameEventBus {
       this.listeners.get(type)?.forEach(cb => cb(data, event));
     }
     // 处理请求响应
-    // if (eventId && this.pendingRequests.has(eventId)) {
-    //   debugger
-    //   const { resolve, reject } = this.pendingRequests.get(eventId)!;
-    //   event.data.success ? resolve(data) : reject(data);
-    //   this.pendingRequests.delete(eventId);
-    // }
+    if (eventId && this.pendingRequests.has(eventId)) {
+      const { resolve, reject } = this.pendingRequests.get(eventId)!;
+      event.data.success ? resolve(data) : reject(data);
+      this.pendingRequests.delete(eventId);
+    }
   };
 
   on(eventType: string, callback: EventCallback) {
@@ -60,18 +59,15 @@ export class CrossFrameEventBus {
   // 包装后在触发
   request<T = any>(eventType: string, data?: any, timeout = 5000): Promise<T> {
     const eventId = Math.random().toString(36).slice(2);
-   
     return new Promise((resolve, reject) => {
-      debugger
       this.pendingRequests.set(eventId, { resolve, reject });
-      console.log('1')
-      console.log(this.pendingRequests)
+      console.log('ee', eventId)
       this.targetWindow.postMessage(
         { type: eventType, data, eventId, isRequest: true },
         this.targetOrigin
       );
-      
-      console.log(eventId)
+      console.log(this.pendingRequests)
+      debugger
 
       // setTimeout(() => {
       //   debugger

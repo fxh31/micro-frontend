@@ -31,6 +31,16 @@ if (window.$wujie) {
   setupEventListener()
   // console.log(window.parent)
 }
+const users = [
+  { user: 'barney', age: 36, active: true },
+  { user: 'fred', age: 40, active: false },
+]
+console.log(
+  window.lodash.filter(users, function (o) {
+    return !o.active
+  }),
+)
+console.log(window)
 </script>
 
 <template>

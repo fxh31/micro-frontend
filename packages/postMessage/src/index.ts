@@ -1,4 +1,5 @@
-type EventCallback = (data: any, event?: MessageEvent) => void;
+export type EventCallback = (data: any, event?: MessageEvent) => void;
+export type ResponseFunction = (data: any, success?: boolean) => void;
 
 export class CrossFrameEventBus {
   private listeners = new Map<string, Set<EventCallback>>();
@@ -56,26 +57,40 @@ export class CrossFrameEventBus {
     this.targetWindow.postMessage({ type: eventType, data }, this.targetOrigin);
   }
 
-  // 包装后在触发
+  // 包装后再触发 emit 
   request<T = any>(eventType: string, data?: any, timeout = 5000): Promise<T> {
     const eventId = Math.random().toString(36).slice(2);
     return new Promise((resolve, reject) => {
       this.pendingRequests.set(eventId, { resolve, reject });
-      console.log('ee', eventId)
       this.targetWindow.postMessage(
         { type: eventType, data, eventId, isRequest: true },
         this.targetOrigin
       );
-      console.log(this.pendingRequests)
-      debugger
 
-      // setTimeout(() => {
-      //   debugger
-      //   if (this.pendingRequests.has(eventId)) {
-      //     reject(new Error('Request timeout'));
-      //     this.pendingRequests.delete(eventId);
-      //   }
-      // }, timeout);
+      setTimeout(() => {
+        if (this.pendingRequests.has(eventId)) {
+          reject(new Error('Request timeout'));
+          this.pendingRequests.delete(eventId);
+        }
+      }, timeout);
+    });
+  }
+  
+  // 包装后在注册 on 
+  onRequest(eventType: string, handler: (data: any, response: ResponseFunction) => void) {
+    this.on(eventType, (data: any, originalEvent: MessageEvent) => {
+      // 生成 response 函数
+      const response: ResponseFunction = (responseData, success = true) => {
+       ( originalEvent.source as Window).postMessage({
+          type: `${eventType}_RESPONSE`, // 可选：自动生成响应类型
+          data: responseData,
+          eventId: originalEvent.data.eventId, // 自动关联 eventId
+          success: success
+        }, originalEvent.origin);
+      };
+      
+      // 执行用户处理逻辑，并传入 response
+      handler(data, response);
     });
   }
 

@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { inject, onMounted } from 'vue'
+import type { ResponseFunction } from '@repo/post-message-bus'
 
 // const offEvent = inject('offEvent')
 const childBus = inject('childBus')
@@ -32,19 +33,11 @@ function fetchMock(name) {
 }
 function getList() {
   // 注册 Test_R，等待其他应用触发
-  childBus.on('Test_R', async (res, event) => {
-    const data = await fetchMock(res.name)
-    const eventId = event.data.eventId
-
-    event.source.postMessage(
-      {
-        type: 'Test_Res',
-        data,
-        eventId: eventId,
-        success: true,
-      },
-      event.origin,
-    )
+  childBus.onRequest('Test_R', async (data, response: ResponseFunction) => {
+    const res = await fetchMock(data.name)
+    if (200 <= res.code < 300) {
+      response(res, true)
+    }
   })
 }
 onMounted(() => {

@@ -40,7 +40,7 @@ function initPostBus() {
 async function sendMessage() {
   // mainBus.emit('LOAD_CONFIG', { theme: 'dark', name: IframeId.value })
   const res = await mainBus.request('Test_R', { name: 66 })
-  console.log(res)
+  console.log('main get res:', res)
 }
 
 function listenOn() {

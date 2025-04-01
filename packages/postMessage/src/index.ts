@@ -1,15 +1,22 @@
 export type EventCallback = (data: any, event?: MessageEvent) => void;
 export type ResponseFunction = (data: any, success?: boolean) => void;
 
+export interface RequestOptions {
+  timeout?: number;
+  targetOrigin?: string;
+}
+
 export class CrossFrameEventBus {
   private listeners = new Map<string, Set<EventCallback>>();
   private pendingRequests = new Map<string, { resolve: Function; reject: Function }>();
+  private targetOriginArray: string[];
 
   constructor(
     private targetWindow: Window,
-    private targetOrigin: string = '*',
+    private targetOrigin: string | string[],
     private debug: boolean = false
   ) {
+    this.targetOriginArray = Array.isArray(targetOrigin) ? targetOrigin : [targetOrigin];
     this.initListener();
   }
 
@@ -54,17 +61,22 @@ export class CrossFrameEventBus {
 
   // 直接触发
   emit(eventType: string, data?: any) {
-    this.targetWindow.postMessage({ type: eventType, data }, this.targetOrigin);
+    this.targetOriginArray.forEach(origin => {
+      this.targetWindow.postMessage({ type: eventType, data }, origin);
+    });
   }
 
   // 包装后再触发 emit 
-  request<T = any>(eventType: string, data?: any, timeout = 5000): Promise<T> {
+  request<T = any>(eventType: string, data?: any, options?: RequestOptions): Promise<T> {
+    const { timeout = 5000, targetOrigin = this.targetOriginArray[0] } = options;
+    
     const eventId = Math.random().toString(36).slice(2);
     return new Promise((resolve, reject) => {
       this.pendingRequests.set(eventId, { resolve, reject });
+      
       this.targetWindow.postMessage(
         { type: eventType, data, eventId, isRequest: true },
-        this.targetOrigin
+        targetOrigin 
       );
 
       setTimeout(() => {
